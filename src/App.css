@@ -1,0 +1,77 @@
+.sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 40px);
+  grid-template-rows: repeat(9, 40px);
+  gap: 1px;
+  border: 3px solid #333;
+  background-color: #333;
+  margin: 20px auto;
+  width: fit-content;
+}
+
+.sudoku-row {
+  display: contents;
+}
+
+.sudoku-cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid gray;
+  color: black;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: white;
+}
+
+.sudoku-cell:nth-child(3n) {
+  border-bottom: 3px solid slategray;
+}
+
+.sudoku-cell:nth-child(n+7) {
+  border-bottom: 3px solid slategray;
+}
+
+.sudoku-row:nth-child(3n) .sudoku-cell {
+  border-bottom: 3px solid slategray;
+}
+
+.sudoku-row .sudoku-cell:nth-child(3n) {
+  border-right: 3px solid slategray;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;  
+}
+
+button:hover:not(:disabled) {
+  background-color: darkgreen;
+}
+
+.button:disabled {
+  background-color: darkgreen;
+  cursor: not-allowed;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: flex-start;
+  gap: 16px;
+}

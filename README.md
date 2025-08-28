@@ -1,13 +1,69 @@
-# Simple-Python-Sudoku-Solver
-What is this nonsense?
+# React + TypeScript + Vite
 
-This is a Python program that solves a given Sudoku puzzle using the backtracking algorithm.
-The program prompts the user to enter the Sudoku puzzle one row at a time, with empty cells represented by 0 or a dot (.). 
-The puzzle is then printed to the console, and the program attempts to solve it using the solve_puzzle() function.
-The is_valid() function checks if a given value can be placed in a specific cell of the puzzle, according to the rules of Sudoku. 
-If the value is already present in the same row, column, or 3x3 box, it is not valid.
-The solve_puzzle() function uses a recursive backtracking algorithm to try different values for each empty cell until a solution is found. 
-If a value is found to be invalid, the algorithm backtracks to the previous cell and tries a different value until a solution is found.
-Finally, the program prints the solved puzzle to the console, or prints a message indicating that the puzzle is unsolvable.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
--sirclar
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
